@@ -29,23 +29,23 @@ public class User implements Serializable{
 	/**
 	 * 密码
 	 */
-	@Column(name="password")
-	private String password;
+	@Column(name="pwd")
+	private String pwd;
 	
 	/**
-	 * 手机号码
+	 * 手机
 	 */
 	@Column(name="mobile")
 	private String mobile;
 	
 	/**
-	 * 手机号码
+	 * 固话
 	 */
 	@Column(name="telephone")
 	private String telephone;
 	
 	/**
-	 * 电子邮箱
+	 * 电子邮件
 	 */
 	@Column(name="email")
 	private String email;
@@ -57,7 +57,7 @@ public class User implements Serializable{
 	private String realName;
 	
 	/**
-	 * 状态:1-正常;0-锁定
+	 * 状态
 	 */
 	@Column(name="status")
 	private String status;
@@ -78,12 +78,12 @@ public class User implements Serializable{
 		this.username = username;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPwd() {
+		return pwd;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 
 	public String getMobile() {
