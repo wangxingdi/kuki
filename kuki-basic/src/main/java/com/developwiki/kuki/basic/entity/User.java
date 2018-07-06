@@ -1,11 +1,13 @@
 package com.developwiki.kuki.basic.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="kuki_basic_user")
@@ -33,7 +35,7 @@ public class User implements Serializable{
 	private String pwd;
 	
 	/**
-	 * 手机
+	 * 移动电话
 	 */
 	@Column(name="mobile")
 	private String mobile;
@@ -61,6 +63,9 @@ public class User implements Serializable{
 	 */
 	@Column(name="status")
 	private String status;
+	
+	@Transient
+	private List<Role> roleList;
 
 	public String getUserId() {
 		return userId;
@@ -126,6 +131,11 @@ public class User implements Serializable{
 		this.status = status;
 	}
 
-	
+	public List<Role> getRoleList() {
+		return roleList;
+	}
 
+	public void setRoleList(List<Role> roleList) {
+		this.roleList = roleList;
+	}
 }

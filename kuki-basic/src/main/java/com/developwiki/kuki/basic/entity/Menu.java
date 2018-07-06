@@ -1,11 +1,13 @@
 package com.developwiki.kuki.basic.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="kuki_basic_menu")
@@ -49,6 +51,9 @@ public class Menu implements Serializable{
 	 */
 	@Column(name="status")
 	private String status;
+	
+	@Transient
+	private List<Menu> children;
 
 	public String getMenuId() {
 		return menuId;
@@ -96,6 +101,14 @@ public class Menu implements Serializable{
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public List<Menu> getChildren() {
+		return children;
+	}
+
+	public void setChildren(List<Menu> children) {
+		this.children = children;
 	}
 	
 

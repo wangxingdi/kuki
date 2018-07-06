@@ -14,33 +14,33 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.developwiki.kuki.admin.constant.SessionConstant;
 import com.developwiki.kuki.basic.entity.Menu;
 import com.developwiki.kuki.basic.utils.Md5Utils;
 
 @Controller
 public class LoginController {
 
-	@RequestMapping("/login")
+	@RequestMapping("/toLogin")
 	public String login(){
 		return "login";
 	}
 	
-	@RequestMapping("/do_login")
-	public String doLogin(HttpServletRequest request, Model model){
+	@RequestMapping("/login")
+	public String login(HttpServletRequest request, Model model){
 		String username = request.getParameter("username");
 		String pwd = request.getParameter("pwd");
 		boolean rememberMe = false;
-		String md5Pwd = Md5Utils.generatePassword(pwd);
+		String md5Pwd = Md5Utils.encodePassword(pwd);
 		try {
 			UsernamePasswordToken token = new UsernamePasswordToken(username, md5Pwd, rememberMe);
 			Subject subject = SecurityUtils.getSubject();
 			subject.login(token);
 			
 			//跳转第一个菜单
-			List<Menu> hasResource = (List<Menu>) request.getSession().getAttribute(WebHelper.SESSION_MENU_RESOURCE);
-			if(hasResource != null && !hasResource.isEmpty()){
-				for(Menu menu : hasResource){
-					
+			List<Menu> menuList = (List<Menu>) request.getSession().getAttribute(SessionConstant.SESSION_MENU);
+			/*if(menuList != null && !menuList.isEmpty()){
+				for(Menu menu : menuList){
 					List<Menu> chResources = menu.getChildren();
 					if(StringUtils.isNotBlank(menu.getUrl()) && (chResources == null || chResources.isEmpty())){
 						return "redirect:" + menu.getUrl();
@@ -53,8 +53,7 @@ public class LoginController {
 						}
 					}
 				}
-			}
-			
+			}*/
 			return "redirect:/user/list";
 		} catch (LockedAccountException lae) {
 //			lae.printStackTrace();
@@ -71,10 +70,8 @@ public class LoginController {
 	
 	@RequestMapping("/login_out")
 	public String loginOut(HttpServletRequest request){
-		
 		Subject subject = SecurityUtils.getSubject();
 		subject.logout();
-		
 		return "redirect:/login";
 	}
 }
