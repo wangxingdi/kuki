@@ -2,6 +2,8 @@ package com.developwiki.kuki.basic.utils;
 
 import org.junit.Test;
 
+import com.youyanpai.kuki.basic.util.Md5Utils;
+
 /**
  * ≤‚ ‘¿‡
  * @author wangxd
