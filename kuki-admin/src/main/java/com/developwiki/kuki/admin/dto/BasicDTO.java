@@ -1,16 +1,20 @@
 package com.developwiki.kuki.admin.dto;
 
+/**
+ * 基础数据传输类
+ * @author wangxd
+ */
 public class BasicDTO {
 	
 	/**
 	 * 页索引
 	 */
-	private int pageIndex;
+	private Integer pageIndex;
 	
 	/**
 	 * 页大小
 	 */
-	private int pageSize;
+	private Integer pageSize;
 	
 	/**
 	 * 排序字段
@@ -52,6 +56,12 @@ public class BasicDTO {
 
 	public void setSortDirection(String sortDirection) {
 		this.sortDirection = sortDirection;
+	}
+
+	@Override
+	public String toString() {
+		return "BasicDTO [pageIndex=" + pageIndex + ", pageSize=" + pageSize + ", sortName=" + sortName
+				+ ", sortDirection=" + sortDirection + "]";
 	}
 
 }

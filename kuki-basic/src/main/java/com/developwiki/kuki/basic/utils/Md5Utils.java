@@ -2,6 +2,10 @@ package com.developwiki.kuki.basic.utils;
 
 import java.security.MessageDigest;
 
+/**
+ * MD5加密工具类
+ * @author wangxd
+ */
 public class Md5Utils {
 	
 	/**

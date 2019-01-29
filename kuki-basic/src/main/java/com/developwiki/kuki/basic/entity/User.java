@@ -9,6 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+/**
+ * 用户实体类
+ * @author wangxd
+ */
 @Entity
 @Table(name="kuki_basic_user")
 public class User implements Serializable{

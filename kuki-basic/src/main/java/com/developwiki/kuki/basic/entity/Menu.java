@@ -9,6 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+/**
+ * 菜单实体类
+ * @author wangxd
+ */
 @Entity
 @Table(name="kuki_basic_menu")
 public class Menu implements Serializable{

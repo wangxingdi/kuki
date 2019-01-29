@@ -18,14 +18,30 @@ import com.developwiki.kuki.admin.constant.SessionConstant;
 import com.developwiki.kuki.basic.entity.Menu;
 import com.developwiki.kuki.basic.utils.Md5Utils;
 
+/**
+ * µÇÂ¼¿ØÖÆÀà
+ * @author wangxd
+ */
 @Controller
 public class LoginController {
 
+	/**
+	 * È¥µÇÂ¼
+	 * @return String
+	 * @author wangxd
+	 */
 	@RequestMapping("/toLogin")
 	public String login(){
 		return "login";
 	}
 	
+	/**
+	 * µÇÂ¼
+	 * @param request
+	 * @param model
+	 * @return String
+	 * @author wangxd
+	 */
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request, Model model){
 		String username = request.getParameter("username");
@@ -68,6 +84,12 @@ public class LoginController {
 		return "login";
 	}
 	
+	/**
+	 * µÇ³ö
+	 * @param request
+	 * @return String
+	 * @author wangxd
+	 */
 	@RequestMapping("/login_out")
 	public String loginOut(HttpServletRequest request){
 		Subject subject = SecurityUtils.getSubject();

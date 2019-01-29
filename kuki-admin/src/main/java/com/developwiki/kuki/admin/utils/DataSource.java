@@ -1,5 +1,9 @@
 package com.developwiki.kuki.admin.utils;
 
+/**
+ * สýพÝิด
+ * @author wangxd
+ */
 public class DataSource {
 	
 	/**

@@ -3,6 +3,10 @@ package com.developwiki.kuki.basic.entity;
 import javax.persistence.Column;
 import javax.persistence.Id;
 
+/**
+ * 角色用户实体类
+ * @author wangxd
+ */
 public class RoleUser {
 	
 	@Id

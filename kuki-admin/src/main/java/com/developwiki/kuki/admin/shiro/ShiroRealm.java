@@ -31,7 +31,11 @@ import com.developwiki.kuki.basic.service.MenuService;
 import com.developwiki.kuki.basic.service.RoleService;
 import com.developwiki.kuki.basic.service.UserService;
 
-public class ShiroDBRealm extends AuthorizingRealm{
+/**
+ * 
+ * @author wangxd
+ */
+public class ShiroRealm extends AuthorizingRealm{
 	
 	@Autowired
 	private UserService userService;
@@ -42,6 +46,9 @@ public class ShiroDBRealm extends AuthorizingRealm{
 	
 	/**
 	 * 授权
+	 * @param principals
+	 * @return AuthorizationInfo
+	 * @author wangxd
 	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
@@ -68,13 +75,15 @@ public class ShiroDBRealm extends AuthorizingRealm{
 				}
 			}
 		}
-		
 		info.addStringPermissions(permissionSet);
 		return info;
 	}
 
 	/**
 	 * 验证当前用户
+	 * @param authcToken
+	 * @return AuthenticationInfo
+	 * @author wangxd 
 	 */
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
@@ -95,6 +104,11 @@ public class ShiroDBRealm extends AuthorizingRealm{
         return null;
 	}
 	
+	/**
+	 * 初始化菜单
+	 * @param userId
+	 * @author wangxd
+	 */
 	private void initMenu(String userId){
 		//菜单权限
 		List<Menu> menuResources = menuService.findAllMenu();
@@ -111,6 +125,12 @@ public class ShiroDBRealm extends AuthorizingRealm{
 		setSession(SessionConstant.SESSION_MENU, hasResource);
 	}
 	
+	/**
+	 * @param resource
+	 * @param map
+	 * @return Menu
+	 * @author wangxd
+	 */
 	private Menu hasResource(Menu resource, Map<String, Object> map){
 		if(map.containsKey(resource.getId())){
 			List<Menu> chResources = resource.getChildren();
@@ -131,9 +151,10 @@ public class ShiroDBRealm extends AuthorizingRealm{
 	}
 	
 	/**
-	 * 
+	 * 保存会话
 	 * @param key
 	 * @param value
+	 * @author wangxd
 	 */
 	private void setSession(Object key, Object value){
 		Subject subject = SecurityUtils.getSubject();

@@ -2,7 +2,11 @@ package com.developwiki.kuki.basic.utils;
 
 import org.junit.Test;
 
-public class TestMd5Utils {
+/**
+ * ≤‚ ‘¿‡
+ * @author wangxd
+ */
+public class Md5UtilsTest {
 
 	@Test
 	public void testEncodeByMD5(){

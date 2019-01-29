@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * 参数字典实体类
+ * @author wangxd
+ */
 @Entity
 @Table(name="kuki_basic_param")
 public class Param implements Serializable{
