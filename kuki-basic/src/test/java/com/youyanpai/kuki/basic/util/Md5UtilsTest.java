@@ -1,4 +1,4 @@
-package com.developwiki.kuki.basic.utils;
+package com.youyanpai.kuki.basic.util;
 
 import org.junit.Test;
 
